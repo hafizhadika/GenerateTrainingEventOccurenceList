@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,8 +34,12 @@ namespace TrainingEventSchedulerTest
                 RepeatInterval = 3
             };
 
-            var startDate = new DateTime(2024, 1, 1);
-            var endDate = new DateTime(2024, 1, 20);
+            var startDate = new DateTime(2025, 1, 1);
+            var endDate = new DateTime(2025, 1, 20);
+
+            Console.WriteLine($"Start Date: {startDate:yyyy-MM-dd}");
+            Console.WriteLine($"End Date: {endDate:yyyy-MM-dd}");
+            Console.WriteLine($"Repeat Interval: {repeatData.RepeatInterval}");
 
             var occurrences = EnumerateOccurrences(repeatData, startDate, endDate).ToList();
             PrintOccurrences(occurrences);
@@ -52,8 +56,12 @@ namespace TrainingEventSchedulerTest
                 WeeklyRepeatDays = new List<DayOfWeek>() // Empty list = use start date's day
             };
 
-            var startDate = new DateTime(2024, 1, 1); // Monday
-            var endDate = new DateTime(2024, 2, 29);
+            var startDate = new DateTime(2025, 1, 1); // Monday
+            var endDate = new DateTime(2025, 2, 28);
+
+            Console.WriteLine($"Start Date: {startDate:yyyy-MM-dd}");
+            Console.WriteLine($"End Date: {endDate:yyyy-MM-dd}");
+            Console.WriteLine($"Repeat Interval: {repeatData.RepeatInterval}");
 
             var occurrences = EnumerateOccurrences(repeatData, startDate, endDate).ToList();
             PrintOccurrences(occurrences);
@@ -75,8 +83,12 @@ namespace TrainingEventSchedulerTest
                 }
             };
 
-            var startDate = new DateTime(2024, 1, 1); // Monday
-            var endDate = new DateTime(2024, 1, 31);
+            var startDate = new DateTime(2025, 1, 1); // Monday
+            var endDate = new DateTime(2025, 1, 31);
+
+            Console.WriteLine($"Start Date: {startDate:yyyy-MM-dd}");
+            Console.WriteLine($"End Date: {endDate:yyyy-MM-dd}");
+            Console.WriteLine($"Repeat Interval: {repeatData.RepeatInterval}");
 
             var occurrences = EnumerateOccurrences(repeatData, startDate, endDate).ToList();
             PrintOccurrences(occurrences);
@@ -92,8 +104,12 @@ namespace TrainingEventSchedulerTest
                 RepeatInterval = 1
             };
 
-            var startDate = new DateTime(2024, 1, 1); // Monday
-            var endDate = new DateTime(2024, 1, 14);
+            var startDate = new DateTime(2025, 1, 1); // Monday
+            var endDate = new DateTime(2025, 1, 14);
+
+            Console.WriteLine($"Start Date: {startDate:yyyy-MM-dd}");
+            Console.WriteLine($"End Date: {endDate:yyyy-MM-dd}");
+            Console.WriteLine($"Repeat Interval: {repeatData.RepeatInterval}");
 
             var occurrences = EnumerateOccurrences(repeatData, startDate, endDate).ToList();
             PrintOccurrences(occurrences);
@@ -109,8 +125,12 @@ namespace TrainingEventSchedulerTest
                 RepeatInterval = 2
             };
 
-            var startDate = new DateTime(2024, 1, 6); // Saturday
-            var endDate = new DateTime(2024, 2, 29);
+            var startDate = new DateTime(2025, 1, 6); // Saturday
+            var endDate = new DateTime(2025, 2, 28);
+
+            Console.WriteLine($"Start Date: {startDate:yyyy-MM-dd}");
+            Console.WriteLine($"End Date: {endDate:yyyy-MM-dd}");
+            Console.WriteLine($"Repeat Interval: {repeatData.RepeatInterval}");
 
             var occurrences = EnumerateOccurrences(repeatData, startDate, endDate).ToList();
             PrintOccurrences(occurrences);
@@ -127,8 +147,12 @@ namespace TrainingEventSchedulerTest
                 MonthlyRepeatType = MonthlyRepeatType.DayOfTheMonth
             };
 
-            var startDate = new DateTime(2024, 1, 15);
-            var endDate = new DateTime(2024, 6, 30);
+            var startDate = new DateTime(2025, 1, 15);
+            var endDate = new DateTime(2025, 6, 30);
+
+            Console.WriteLine($"Start Date: {startDate:yyyy-MM-dd}");
+            Console.WriteLine($"End Date: {endDate:yyyy-MM-dd}");
+            Console.WriteLine($"Repeat Interval: {repeatData.RepeatInterval}");
 
             var occurrences = EnumerateOccurrences(repeatData, startDate, endDate).ToList();
             PrintOccurrences(occurrences);
@@ -145,8 +169,12 @@ namespace TrainingEventSchedulerTest
                 MonthlyRepeatType = MonthlyRepeatType.DayOfTheWeek
             };
 
-            var startDate = new DateTime(2024, 1, 9); // 2nd Tuesday of January
-            var endDate = new DateTime(2024, 6, 30);
+            var startDate = new DateTime(2025, 1, 9); // 2nd Tuesday of January
+            var endDate = new DateTime(2025, 6, 30);
+
+            Console.WriteLine($"Start Date: {startDate:yyyy-MM-dd}");
+            Console.WriteLine($"End Date: {endDate:yyyy-MM-dd}");
+            Console.WriteLine($"Repeat Interval: {repeatData.RepeatInterval}");
 
             var occurrences = EnumerateOccurrences(repeatData, startDate, endDate).ToList();
             PrintOccurrences(occurrences);
@@ -162,8 +190,12 @@ namespace TrainingEventSchedulerTest
                 RepeatInterval = 2
             };
 
-            var startDate = new DateTime(2024, 1, 15);
-            var endDate = new DateTime(2034, 12, 31);
+            var startDate = new DateTime(2025, 1, 15);
+            var endDate = new DateTime(2035, 12, 31);
+
+            Console.WriteLine($"Start Date: {startDate:yyyy-MM-dd}");
+            Console.WriteLine($"End Date: {endDate:yyyy-MM-dd}");
+            Console.WriteLine($"Repeat Interval: {repeatData.RepeatInterval}");
 
             var occurrences = EnumerateOccurrences(repeatData, startDate, endDate).ToList();
             PrintOccurrences(occurrences);
