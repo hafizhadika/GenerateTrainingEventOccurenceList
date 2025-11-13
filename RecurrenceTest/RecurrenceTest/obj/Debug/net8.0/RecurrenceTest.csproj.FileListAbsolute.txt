@@ -1,0 +1,14 @@
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\bin\Debug\net8.0\RecurrenceTest.exe
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\bin\Debug\net8.0\RecurrenceTest.deps.json
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\bin\Debug\net8.0\RecurrenceTest.runtimeconfig.json
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\bin\Debug\net8.0\RecurrenceTest.dll
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\bin\Debug\net8.0\RecurrenceTest.pdb
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\obj\Debug\net8.0\RecurrenceTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\obj\Debug\net8.0\RecurrenceTest.AssemblyInfoInputs.cache
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\obj\Debug\net8.0\RecurrenceTest.AssemblyInfo.cs
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\obj\Debug\net8.0\RecurrenceTest.csproj.CoreCompileInputs.cache
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\obj\Debug\net8.0\RecurrenceTest.dll
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\obj\Debug\net8.0\refint\RecurrenceTest.dll
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\obj\Debug\net8.0\RecurrenceTest.pdb
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\obj\Debug\net8.0\RecurrenceTest.genruntimeconfig.cache
+C:\INX\Recurrence\RecurrenceTest\RecurrenceTest\obj\Debug\net8.0\ref\RecurrenceTest.dll
