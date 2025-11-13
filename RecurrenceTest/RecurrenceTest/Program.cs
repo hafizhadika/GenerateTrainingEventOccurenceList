@@ -14,8 +14,6 @@ namespace TrainingEventSchedulerTest
             TestDailyRecurrence();
             TestWeeklyRecurrence();
             TestWeeklyRecurrenceMultipleDays();
-            TestWeekdayRecurrence();
-            TestWeekendRecurrence();
             TestMonthlyRecurrenceDayOfMonth();
             TestMonthlyRecurrenceDayOfWeek();
             TestYearlyRecurrence();
@@ -95,51 +93,9 @@ namespace TrainingEventSchedulerTest
             Console.WriteLine($"Total occurrences: {occurrences.Count}\n");
         }
 
-        static void TestWeekdayRecurrence()
-        {
-            Console.WriteLine("--- TEST 4: Weekday Recurrence (Every Week) ---");
-            var repeatData = new RepeatDataObject
-            {
-                RepeatType = RepeatType.Weekday,
-                RepeatInterval = 1
-            };
-
-            var startDate = new DateTime(2025, 1, 1); // Monday
-            var endDate = new DateTime(2025, 1, 14);
-
-            Console.WriteLine($"Start Date: {startDate:yyyy-MM-dd}");
-            Console.WriteLine($"End Date: {endDate:yyyy-MM-dd}");
-            Console.WriteLine($"Repeat Interval: {repeatData.RepeatInterval}");
-
-            var occurrences = EnumerateOccurrences(repeatData, startDate, endDate).ToList();
-            PrintOccurrences(occurrences);
-            Console.WriteLine($"Total occurrences: {occurrences.Count}\n");
-        }
-
-        static void TestWeekendRecurrence()
-        {
-            Console.WriteLine("--- TEST 5: Weekend Recurrence (Every 2 Weeks) ---");
-            var repeatData = new RepeatDataObject
-            {
-                RepeatType = RepeatType.Weekend,
-                RepeatInterval = 2
-            };
-
-            var startDate = new DateTime(2025, 1, 6); // Saturday
-            var endDate = new DateTime(2025, 2, 28);
-
-            Console.WriteLine($"Start Date: {startDate:yyyy-MM-dd}");
-            Console.WriteLine($"End Date: {endDate:yyyy-MM-dd}");
-            Console.WriteLine($"Repeat Interval: {repeatData.RepeatInterval}");
-
-            var occurrences = EnumerateOccurrences(repeatData, startDate, endDate).ToList();
-            PrintOccurrences(occurrences);
-            Console.WriteLine($"Total occurrences: {occurrences.Count}\n");
-        }
-
         static void TestMonthlyRecurrenceDayOfMonth()
         {
-            Console.WriteLine("--- TEST 6: Monthly Recurrence (15th of Every Month) ---");
+            Console.WriteLine("--- TEST 4: Monthly Recurrence (15th of Every Month) ---");
             var repeatData = new RepeatDataObject
             {
                 RepeatType = RepeatType.Monthly,
@@ -161,7 +117,7 @@ namespace TrainingEventSchedulerTest
 
         static void TestMonthlyRecurrenceDayOfWeek()
         {
-            Console.WriteLine("--- TEST 7: Monthly Recurrence (2nd Tuesday of Every Month) ---");
+            Console.WriteLine("--- TEST 5: Monthly Recurrence (2nd Tuesday of Every Month) ---");
             var repeatData = new RepeatDataObject
             {
                 RepeatType = RepeatType.Monthly,
@@ -183,7 +139,7 @@ namespace TrainingEventSchedulerTest
 
         static void TestYearlyRecurrence()
         {
-            Console.WriteLine("--- TEST 8: Yearly Recurrence (Every 2 Years) ---");
+            Console.WriteLine("--- TEST 6: Yearly Recurrence (Every 2 Years) ---");
             var repeatData = new RepeatDataObject
             {
                 RepeatType = RepeatType.Yearly,
@@ -269,51 +225,6 @@ namespace TrainingEventSchedulerTest
                         }
                         break;
                     }
-                case RepeatType.Weekday:
-                    {
-                        // Treat RepeatInterval as "every N weeks"
-                        var weekdays = new[] { DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday };
-                        var current = startDate;
-                        var startWeek = ISOWeekIndex(startDate);
-                        while (current <= endDate)
-                        {
-                            var weekDiff = ISOWeekIndex(current) - startWeek;
-                            foreach (var wd in weekdays)
-                            {
-                                var candidate = WeekAlignedDate(current, wd);
-                                if (candidate < startDate) continue;
-                                if (candidate > endDate) yield break;
-                                if ((weekDiff % repeatData.RepeatInterval) == 0 && candidate >= current && candidate <= current.AddDays(6))
-                                {
-                                    yield return candidate;
-                                }
-                            }
-                            current = current.AddDays(7);
-                        }
-                        break;
-                    }
-                case RepeatType.Weekend:
-                    {
-                        var weekendDays = new[] { DayOfWeek.Saturday, DayOfWeek.Sunday };
-                        var current = startDate;
-                        var startWeek = ISOWeekIndex(startDate);
-                        while (current <= endDate)
-                        {
-                            var weekDiff = ISOWeekIndex(current) - startWeek;
-                            foreach (var wd in weekendDays)
-                            {
-                                var candidate = WeekAlignedDate(current, wd);
-                                if (candidate < startDate) continue;
-                                if (candidate > endDate) yield break;
-                                if ((weekDiff % repeatData.RepeatInterval) == 0 && candidate >= current && candidate <= current.AddDays(6))
-                                {
-                                    yield return candidate;
-                                }
-                            }
-                            current = current.AddDays(7);
-                        }
-                        break;
-                    }
                 case RepeatType.Monthly:
                     {
                         var current = startDate;
@@ -362,21 +273,6 @@ namespace TrainingEventSchedulerTest
                         break;
                     }
             }
-        }
-
-        // Helper: returns ISO-like sequential week index (simple approximation good for diffing weeks).
-        private static int ISOWeekIndex(DateTime date)
-        {
-            // Using year * 53 + approximate week number to keep monotonic increasing sequence.
-            var dayOfYear = date.DayOfYear;
-            return date.Year * 53 + (dayOfYear / 7);
-        }
-
-        // Align to a specific DayOfWeek within the same week block starting at 'weekDate' (weekDate assumed as anchor inside that week).
-        private static DateTime WeekAlignedDate(DateTime weekDate, DayOfWeek target)
-        {
-            var delta = target - weekDate.DayOfWeek;
-            return weekDate.AddDays(delta);
         }
 
         // Returns the Nth weekday of a month (e.g., 2nd Tuesday). If ordinal exceeds actual occurrences returns null.
